@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
     
+    protected $guarded = [];
+
     // Relation to User
     public function user()
     {
