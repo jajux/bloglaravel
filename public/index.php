@@ -53,20 +53,3 @@ $response = tap($kernel->handle(
 ))->send();
 
 $kernel->terminate($request, $response);
-
-require_once 'vendor/autoload.php';
-
-// use the factory to create a Faker\Generator instance
-$faker = Faker\Factory::create();
-
-for ($i = 0; $i < 10; $i++) {
-
-    $width = 100;
-    $height = 100;
-
-    $image = $faker->imageUrl($width, $height, 'sports');
-    echo  "URL - ".$image . "<br/>";
-    echo " -- Image -- <br/>";
-    echo "<img src='" . $image . "'/>";
-    echo "<br/>";
-}
