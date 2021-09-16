@@ -1,5 +1,5 @@
-<div class="hidden w-4/12 -mx-8 lg:block">
-    <div class="px-8">
+<div class="hidden w-4/12 -mx-8 lg:block" >
+    <div class="px-8  py-5" style="background: #eddcd2;">
         <h1 class="mb-4 text-xl font-bold text-gray-700">Authors</h1>
         <div class="flex flex-col max-w-sm px-6 py-4 mx-auto bg-white rounded-lg shadow-md">
             <ul class="-mx-4">
@@ -42,7 +42,7 @@
             </ul>
         </div>
     </div>
-    <div class="px-8 mt-10">
+    <div class="px-8  py-5 mt-10" style="background: #ddbea9;">
         <h1 class="mb-4 text-xl font-bold text-gray-700">Categories</h1>
         <div class="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
             <ul>
@@ -69,7 +69,7 @@
             </ul>
         </div>
     </div>
-    <div class="px-8 mt-10">
+    <div class="px-8 py-5 mt-10" style="background: #cb997e;">
         <h1 class="mb-4 text-xl font-bold text-gray-700">Recent Post</h1>
         <div class="flex flex-col max-w-sm px-8 py-6 mx-auto bg-white rounded-lg shadow-md">
             <div class="flex items-center justify-center"><a href="#"

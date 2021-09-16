@@ -31,17 +31,32 @@
                                     {{ $post->title }}
                                 </h3>
                             </a>
+                            <img class="object-fit object-center h-full w-full" src="{{ asset('storage/' . $post->image) }}"
+                            alt="">
+    
                         </div>
                         <p class="mb-4 text-base text-gray-700 md:text-lg">
-                            {{ Str::limit($post->content, 75) }} 
+                            {{ Str::limit($post->content, 75) }}
                         </p>
                         <div class="flex items-center">
                             <a href="/" aria-label="Author" class="mr-3">
                             </a>
                             <div>
-                                <a href="{{ route('posts.edit', $post) }}" aria-label="Author"
+                                <a href="{{ route('posts.edit', $post) }}"
                                     class="font-semibold text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-400">Editer
-                                    votre post</a>
+                                    votre post
+                                </a>
+                                <a href="#"
+                                    class="font-semibold text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('destroy-post-form').submit();">
+                                    Supprimer votre post
+                                    <form method="post" action="{{ route('posts.destroy', $post) }}" id="destroy-post-form">
+                                        @csrf
+                                        @method('delete')
+                                    </form>
+                                </a>
+
                             </div>
                         </div>
                     @endforeach
