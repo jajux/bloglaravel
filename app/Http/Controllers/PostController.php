@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {
@@ -68,9 +69,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        if (Gate::denies('update-post', $post)) {
+            abort(403);
+        }
+        
+        $categories= Category::all();
+        return view('post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -80,9 +86,23 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePostRequest $request, Post $post)
     {
-        //
+        $arrayUpdate = [
+            'title' => $request->title,
+            'content' => $request->content    
+        ];
+        if ($request ->image  != null) {
+            $imageName = $request->image->store('posts');
+            
+            $arrayUpdate = array_merge($arrayUpdate, [
+                'image' => $imageName
+            ]);
+        }
+
+        $post->update($arrayUpdate);
+        
+        return redirect()->route('dashboard')->with('success', 'Votre post a bien été modifié');
     }
 
     /**

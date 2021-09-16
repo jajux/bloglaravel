@@ -12,7 +12,7 @@ class StorePostRequest extends FormRequest
      * @return bool
      */
     public function authorize()
-    {
+        {
         return true;
     }
 
@@ -23,11 +23,24 @@ class StorePostRequest extends FormRequest
      */
     public function rules()
     {
+        if (request()->routeIs('posts.store')) {
+            $imageRule = 'required|image';
+        } elseif (request()->routeIs('posts.update')) {
+            $imageRule = 'sometimes|image';
+        }
+
         return [
             'title' => 'required',
             'content' => 'required',
-            'image' => 'required|mimes:jpeg,bmp,png,gif',
+            'image' => $imageRule,
             'category' => 'required'
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        if ($this->image == null) {
+            $this->request->remove('image');
+        }
     }
 }
