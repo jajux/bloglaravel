@@ -6,7 +6,7 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
-
+    mode: 'jit',
     theme: {
         extend: {
             fontFamily: {
@@ -15,6 +15,13 @@ module.exports = {
             spacing: {
                 128: '32rem',
             },
+            colors: {
+                sky: colors.sky,
+                cyan: colors.cyan,
+              },
+              container: {
+                center: true,
+              },
         },
     },
 
