@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Editer {{ $post->title}}
+            {{ __( 'Editer un post') }}
         </h2>
     </x-slot>
 
@@ -9,7 +9,7 @@
         @foreach ($errors->all() as $error)
         <span class="block text-red-500">{{ $error }}</span>
         @endforeach
-        <form action="{{ route('posts.update', $post) }}" method="post" enctype="multipart/form-data"
+        <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data"
             class="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2 ">
             
             @method('put')
@@ -48,19 +48,8 @@
                     <span class="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
                     <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
                     <span class="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
-                    <span class="relative">Modifier mon post</span>
+                    <span class="relative">Modifier le post</span>
                     </x-button>
-                    <x-button 
-                    style="display: block !important;" class="px-5 py-2.5 relative rounded group font-medium text-white font-medium inline-block mx-5">
-                    <span class="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
-                    <span class="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
-                    <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
-                    <span class="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-gray-600 from-green-500"></span>
-                    <span class="relative">
-                        <a href="{{ route('posts.index', $post) }}">Accueil</a>
-                    </span>
-                    </x-button>
-
             </div>
         </form>
     </div>

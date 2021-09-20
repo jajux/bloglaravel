@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Tableau de bord d\' administration') }}
         </h2>
     </x-slot>
 
@@ -14,12 +14,7 @@
         <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
           <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
             <h2 class="mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-              Votre tableau de bord<br class="hidden md:block" />
-              et rien qu'un simple tableau de bord
-              <span class="relative inline-block px-2">
-                <div class="absolute inset-0 transform -skew-x-12 bg-teal-accent-400"></div>
-                <span class="relative text-teal-900">pour vous {{ Auth::user()->name }} </span>
-              </span>
+              Votre tableau d'administration
             </h2>
             <p class="mb-6 text-base text-indigo-100 md:text-lg">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo. Sed ut perspiciatis unde omnis.
@@ -68,7 +63,7 @@
                 <div>
                     @foreach ($posts as $post)
                         <div class="mb-3">
-                            <a href="{{ route('posts.edit', $post) }}"
+                            <a href="{{ route('admin.posts.edit', $post) }}"
                                 class="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-400">
                                 <h3
                                     class="font-sans text-xl font-extrabold leading-none tracking-tight lg:text-2xl  mt-6">
@@ -82,12 +77,6 @@
                         <p class="mb-4 text-base text-gray-700 md:text-lg">
                             {{ Str::limit($post->content, 75) }}
                         </p>
-
-                                {{-- <a href="{{ route('posts.edit', $post) }}"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">Editer
-                                    le post
-                                </a> --}}
-
                                 <a href="{{ route('posts.edit', $post) }}" class="px-5 py-2.5 relative rounded group font-medium text-white font-medium inline-block">
                                     <span class="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
                                     <span class="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
@@ -105,7 +94,7 @@
                                     <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
                                     <span class="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-red-600 from-gray-500"></span>
                                     <span class="relative">Supprimer le post</span>
-                                    <form method="post" action="{{ route('posts.destroy', $post) }}"
+                                    <form method="post" action="{{ route('admin.posts.destroy', $post) }}"
                                     id="destroy-post-form">
                                     @csrf
                                     @method('delete')
@@ -117,10 +106,6 @@
             </div>
         </div>
     </div>
-
-        <a href="{{ route('posts.index', $post) }}">Accueil</a>
-
-  
 
     @include('partials.footer')
 </x-app-layout>
